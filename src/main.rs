@@ -1,48 +1,44 @@
 use std::io::{self,Write};
-use std::process::Command;
+use std::process::{Command, Stdio};
 
 fn main() -> std::io::Result<()> {
-//---------------------------------2------------------------------------------
+//-----------2---------------------------------------------
 
 let stdin = io::stdin();
-
-
-
 let mut user_input = String::with_capacity(256);
 
 print!(">");
-let _stdout= io::stdout().flush();
-
-
+let _stdout = io::stdout().flush();
 stdin.read_line(&mut user_input)?;
-
-
-
-
-
-
-//print!("{}",user_input);
 
 //-----------3---------------------------------------------
 
-let status = Command::new("ls").status();
-//print!("fdsf");
-//---------------------------------------------------4-------------------------------------------
-//
-// status nous force à recuperer les resultat directement , elle redérige les résultats de notre nouveau processus à la sortie standart et tue le processus fils 
+// let status = Command::new("ls").status();
 
-//-----------------------------------------------------------5----------------------------------------------------------------
-//Que fait votre programme pendant que son enfant s’exécute ?
-// il attend que le fils se temrine 
+//let statys_with_argument = Command::new("ls")
+                                   // .arg("-l")
+                                   // .status();
 
-//----------6------------------------
+//-----------4---------------------------------------------
+let mut first_command = Command::new("ls")
+                                    .stdout(Stdio::piped())
+                                    .spawn()?;
 
-let st=Command::new("ls").arg("-l").status();
+if let Some(du_output) = first_command.stdout.take() {
+let mut second_command = Command::new("grep")
+                                    .arg("src")
+                                    .stdin(du_output)
+                                    .stdout(Stdio::piped())
+                                    .spawn()?;
+
+ let my_stdout = second_command.wait_with_output()?;
+
+ println!("{}", String::from_utf8(my_stdout.stdout).unwrap());
+}
+//-----------5---------------------------------------------
 
 
 
 
-// `?` sert à « propager l'erreur » dans la fonction appellante
-// c'est mieux que de crash avec un unwrap ou expect ;)
 Ok(())
 }
