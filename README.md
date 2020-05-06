@@ -22,8 +22,9 @@ Rust est compilé par une machine virtuelle (LLVM:Low Level Virtual Machine)
 *4. Imaginons qu'on a un système avec un processeur 8bits, quelle est la valeur maximale adressable ? Écrire la solution en notation hexadécimale et décimale.*
 
 “Les processeurs 8 bits utilisent normalement un bus de données 8 bits et un bus d'adresse 16 bits"  donc :
-en décimale : 2^16 = **65536 octets**
-en hexadécimale : **#FFFF**
+
+ - en décimale : 2^16 = **65536 octets**
+ - en hexadécimale : **#FFFF**
 
 *5.Donnez votre définition d'un processus citez vos sources !*
 
