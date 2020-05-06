@@ -1,9 +1,9 @@
-#Mini Shell project 
+# Mini Shell project 
 by Jugurtha BOUHADOUN and Saad MAHI
 
-##Questions / Réponses
+## Questions / Réponses
 
-###1.2 Questions : Rappels de Rust, généralités 
+### 1.2 Questions : Rappels de Rust, généralités 
 
 *1. En Rust à quoi servent les références ?*
 
@@ -32,7 +32,7 @@ un processus est un programme en cours d'exécution et il en existe 2 type un pr
 et un processus utilisateur lancé depuis un terminal.
 
 
-###2.1 Questions : Déploiement du projet et entrées sorties
+### 2.1 Questions : Déploiement du projet et entrées sorties
 
 *Comment compiler puis exécuter son programme ? Exécuter les test ? Où sont rangés les binaires(en mode debug) ?*
 
@@ -45,7 +45,7 @@ pour tester : `cargo test [OPTIONS] [TESTNAME] [-- TEST-OPTIONS]`
 les binaires sont rangés dans :
 >target/debug/build
 
-###3.1 Questions : Exécuter une commande
+### 3.1 Questions : Exécuter une commande
 
 *3    Afficher le statut d'une commande, pourquoi Rust vous force à récupérer le statut ?*
 
@@ -59,7 +59,7 @@ il attend que le fils se termine.
 
 7    Un tube entre 2 programmes est comme une sorte de lien entre la sortie standard du  Programme A et l'entrée standard du programme B
 
-###5.1 Questions : Concurrence 
+### 5.1 Questions : Concurrence 
 
 *10   C’est quoi un processus ID ? *
 
