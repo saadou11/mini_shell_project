@@ -2,6 +2,8 @@ use std::io::{self,Write};
 use std::process::{Command, Stdio};
 use std::fmt;
 use std::thread;
+
+// struct Job 
 #[derive(Clone, Debug)]
 pub struct Job{
     pub job_id : u32,
@@ -19,7 +21,6 @@ fn main() -> std::io::Result<()> {
     let stdin = io::stdin();
     let stdout = io::stdout();
 
-    //let mut jobs = Jobs{table : Vec::new(), count : 0};
     let mut jobs =Vec::new();
     let mut user_input = String::with_capacity(256);
 
@@ -91,7 +92,6 @@ loop {
         else 
         {
             //-----------------back simple command----------------------------
-                         //let child : std::process::Child;
             let args : Vec<&str> = command.split(" ").collect();
             let mut child = Command::new(args[1]).args(&args[2..]).spawn()?;         
 
@@ -99,7 +99,6 @@ loop {
             jobs.push(job);
             match child.try_wait() {
                 Ok(_res) => println!("[{}] {} {:?}",jobs.len(), child.id(),args[1] ),
-                //println!("la  [{}] {} {:?}",jobs.table.len(), child.id(), command),
                 Ok(None) => {
                     println!("[{}] {} {:?}",jobs.len(), child.id(), args[1]);
                 }
@@ -170,7 +169,6 @@ fn split_command_with_espace(s : &str) -> String{
         }
         index += 1;
     }
-
     let str_len = s.len();
     let mut index = 0;
     while index < (str_len - 2) {
@@ -180,8 +178,6 @@ fn split_command_with_espace(s : &str) -> String{
             index += 1;
         }
     }
-
     let ret = ret.trim_end();
-
     ret.to_string()
 }
