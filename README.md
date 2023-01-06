@@ -1,5 +1,4 @@
 # Mini Shell project 
-by Jugurtha BOUHADOUN and Saad MAHI
 
 ## Questions / Réponses
 
